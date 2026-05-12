@@ -106,7 +106,33 @@ class RetroSoundEngine {
 
 const sfx = new RetroSoundEngine();
 
-// --- Realistic SVGs ---
+// --- UI SVGs ---
+const LeftArrowSVG = () => (
+  <svg
+    viewBox="0 0 24 24"
+    width="1em"
+    height="1em"
+    fill="currentColor"
+    style={{ verticalAlign: "middle", marginRight: "8px" }}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <polygon points="15,4 5,12 15,20" />
+  </svg>
+);
+
+const RightArrowSVG = () => (
+  <svg
+    viewBox="0 0 24 24"
+    width="1em"
+    height="1em"
+    fill="currentColor"
+    style={{ verticalAlign: "middle", marginLeft: "8px" }}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <polygon points="9,4 19,12 9,20" />
+  </svg>
+);
+
 // --- Realistic SVGs ---
 const PlayerCarSVG = () => (
   <svg
@@ -116,17 +142,14 @@ const PlayerCarSVG = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <defs>
-      {/* Brighter, shiny racing red gradient instead of dark grey */}
       <linearGradient id="metalPaint" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" stopColor="#b30000" />
         <stop offset="25%" stopColor="#ff3333" />
-        <stop offset="50%" stopColor="#ffcccc" />{" "}
-        {/* Bright specular highlight */}
+        <stop offset="50%" stopColor="#ffcccc" />
         <stop offset="75%" stopColor="#ff3333" />
         <stop offset="100%" stopColor="#800000" />
       </linearGradient>
 
-      {/* Slightly brighter glass reflection */}
       <linearGradient id="glass" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#1c2430" />
         <stop offset="45%" stopColor="#2d3748" />
@@ -173,7 +196,7 @@ const PlayerCarSVG = () => (
       fill="url(#metalPaint)"
     />
 
-    {/* Hood Detail - Made slightly brighter to match the new body */}
+    {/* Hood Detail */}
     <path d="M 35 30 L 65 30 L 70 80 L 30 80 Z" fill="rgba(255,255,255,0.15)" />
     <line x1="50" y1="30" x2="50" y2="80" stroke="#ff6666" strokeWidth="1" />
 
@@ -202,7 +225,7 @@ const PlayerCarSVG = () => (
     <polygon points="22,25 34,25 44,-50 12,-50" fill="url(#headlightGlow)" />
     <polygon points="66,25 78,25 88,-50 56,-50" fill="url(#headlightGlow)" />
 
-    {/* Taillights (Made intensely bright neon red to stand out) */}
+    {/* Taillights */}
     <path d="M 22 176 L 35 178 L 35 180 L 20 178 Z" fill="#ff0000" />
     <path d="M 78 176 L 65 178 L 65 180 L 80 178 Z" fill="#ff0000" />
     <rect x="42" y="178" width="16" height="2" fill="#ff0000" />
@@ -217,13 +240,11 @@ const ObstacleBarrelSVG = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <defs>
-      {/* Brighter neon orange and yellow gradient */}
       <radialGradient id="barrelGrad" cx="30%" cy="30%" r="70%">
         <stop offset="0%" stopColor="#ffff00" />
         <stop offset="50%" stopColor="#ff5500" />
         <stop offset="100%" stopColor="#990000" />
       </radialGradient>
-      {/* Brighter pure white stripes */}
       <radialGradient id="whiteStripe" cx="30%" cy="30%" r="70%">
         <stop offset="0%" stopColor="#ffffff" />
         <stop offset="80%" stopColor="#eeeeee" />
@@ -240,7 +261,6 @@ const ObstacleBarrelSVG = () => (
       fill="rgba(0,0,0,0.5)"
       filter="url(#dropShadow)"
     />
-    {/* Adding a bright yellow outer stroke for maximum visibility */}
     <circle
       cx="50"
       cy="50"
@@ -263,13 +283,11 @@ const ObstacleBarrierSVG = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <defs>
-      {/* Lighter concrete for contrast */}
       <linearGradient id="concrete" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#ffffff" />
         <stop offset="50%" stopColor="#b0b0b0" />
         <stop offset="100%" stopColor="#606060" />
       </linearGradient>
-      {/* Neon yellow warning paint */}
       <linearGradient id="yellowPaint" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" stopColor="#ffff00" />
         <stop offset="100%" stopColor="#ffaa00" />
@@ -295,7 +313,6 @@ const ObstacleBarrierSVG = () => (
     />
     <path d="M 20 35 L 80 35 L 75 45 L 25 45 Z" fill="#e0e0e0" />
 
-    {/* High contrast red and yellow hazard stripes */}
     <rect
       x="30"
       y="50"
@@ -331,7 +348,6 @@ const ObstacleOilSVG = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <defs>
-      {/* Toxic neon green/purple sheen to stand out from black asphalt */}
       <radialGradient id="oilSheen" cx="40%" cy="40%" r="60%">
         <stop offset="0%" stopColor="#00ffcc" stopOpacity="1" />
         <stop offset="30%" stopColor="#ff00ff" stopOpacity="0.9" />
@@ -339,7 +355,6 @@ const ObstacleOilSVG = () => (
         <stop offset="100%" stopColor="#000000" stopOpacity="0.95" />
       </radialGradient>
     </defs>
-    {/* Added a bright cyan stroke border to the puddle */}
     <path
       d="M 50 15 C 75 10, 90 35, 80 60 C 70 85, 40 95, 20 75 C 0 55, 15 25, 35 20 C 40 18, 45 16, 50 15 Z"
       fill="#000"
@@ -369,7 +384,6 @@ const ObstaclePotholeSVG = () => (
         <stop offset="100%" stopColor="#444444" />
       </radialGradient>
     </defs>
-    {/* High contrast bright orange outline to mark the pothole edge */}
     <path
       d="M 50 20 C 80 22, 85 50, 75 70 C 60 90, 30 85, 15 65 C 5 45, 20 18, 50 20 Z"
       fill="#222"
@@ -380,7 +394,6 @@ const ObstaclePotholeSVG = () => (
       d="M 52 25 C 75 28, 78 48, 70 65 C 58 82, 35 78, 22 62 C 12 45, 28 23, 52 25 Z"
       fill="url(#holeDepth)"
     />
-    {/* Cracks highlighted in bright warning colors */}
     <path
       d="M 15 65 L 5 75 M 75 70 L 90 80 M 80 35 L 95 30 M 30 22 L 20 5"
       stroke="#ffaa00"
@@ -499,7 +512,6 @@ export default function App() {
     }
   }, [gameState]);
 
-  // UPDATE YOUR EXISTING useEffect FOR KEYBOARD CONTROLS
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (["ArrowLeft", "ArrowRight", "a", "A", "d", "D"].includes(e.key)) {
@@ -507,16 +519,15 @@ export default function App() {
       }
 
       if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a") {
-        setActiveKey("LEFT"); // Set highlight
+        setActiveKey("LEFT");
         moveLeft();
       } else if (e.key === "ArrowRight" || e.key.toLowerCase() === "d") {
-        setActiveKey("RIGHT"); // Set highlight
+        setActiveKey("RIGHT");
         moveRight();
       }
     };
 
     const handleKeyUp = (e: KeyboardEvent) => {
-      // Remove highlight when key is released
       if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a") {
         setActiveKey((prev) => (prev === "LEFT" ? null : prev));
       } else if (e.key === "ArrowRight" || e.key.toLowerCase() === "d") {
@@ -525,11 +536,11 @@ export default function App() {
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("keyup", handleKeyUp); // Listen for key release
+    window.addEventListener("keyup", handleKeyUp);
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("keyup", handleKeyUp); // Cleanup
+      window.removeEventListener("keyup", handleKeyUp);
     };
   }, [moveLeft, moveRight]);
 
@@ -572,7 +583,6 @@ export default function App() {
           }}
         />
 
-        {/* Outer continuous highway lines */}
         <div className="edge-line left-edge" />
         <div className="edge-line right-edge" />
 
@@ -658,13 +668,17 @@ export default function App() {
             className={`control-btn ${activeKey === "LEFT" ? "active" : ""}`}
             onPointerDown={moveLeft}
           >
-            <h3>◀ STEER LEFT</h3>
+            <h3>
+              <LeftArrowSVG /> STEER LEFT
+            </h3>
           </div>
           <div
             className={`control-btn ${activeKey === "RIGHT" ? "active" : ""}`}
             onPointerDown={moveRight}
           >
-            <h3>STEER RIGHT ▶</h3>
+            <h3>
+              STEER RIGHT <RightArrowSVG />
+            </h3>
           </div>
         </div>
       )}
