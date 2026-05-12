@@ -1,0 +1,291 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;600&display=swap");
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  max-width: 450px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #050505;
+  font-family: "Orbitron", sans-serif;
+  touch-action: none;
+  user-select: none;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  padding: 15px;
+  background: linear-gradient(to bottom, #111, #0a0a0a);
+  color: #00ffcc;
+  text-align: center;
+  border-bottom: 2px solid #00ffcc;
+  z-index: 15;
+  box-shadow: 0 4px 15px rgba(0, 255, 204, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header h2 {
+  margin: 0;
+  letter-spacing: 3px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+}
+
+.diff-badge {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  background: rgba(0, 255, 204, 0.1);
+  border: 1px solid #00ffcc;
+  color: #00ffcc;
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+
+.board {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+  background-color: #1a1a1c;
+  box-shadow: inset 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+/* Realistic Asphalt Texture Overlay */
+.asphalt-texture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(#333 1px, transparent 1px);
+  background-size: 4px 4px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Moving Road Lines */
+.road-marker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background-color: transparent;
+  transform: translateX(-50%);
+  background-image: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(255, 255, 255, 0.8) 40%,
+    rgba(255, 255, 255, 0.8) 90%,
+    transparent 90%
+  );
+  background-size: 100% 120px;
+  animation: moveRoadMarkers 0.3s linear infinite;
+  border-radius: 2px;
+}
+
+.left-marker {
+  left: 33.33%;
+}
+.right-marker {
+  left: 66.66%;
+}
+
+/* Solid Highway Edges */
+.edge-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  background-color: rgba(255, 204, 0, 0.7);
+}
+.left-edge {
+  left: 2%;
+}
+.right-edge {
+  right: 2%;
+}
+
+@keyframes moveRoadMarkers {
+  0% {
+    background-position: 0 -120px;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.car {
+  position: absolute;
+  width: 22%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: left 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.car svg {
+  width: 100%;
+  height: 100%;
+  object-fit: visible;
+  display: block;
+}
+
+.player-car {
+  z-index: 10;
+}
+
+.obstacle-car {
+  z-index: 5;
+  width: 18%;
+}
+
+.flat-obstacle {
+  z-index: 2; /* Keep potholes and oil beneath other 3D obstacles conceptually */
+}
+
+/* Glassmorphism Menus */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.menu-glass {
+  background-color: rgba(5, 5, 8, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.crash-glass {
+  background-color: rgba(20, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.title-text {
+  color: #fff;
+  font-size: 3.5rem;
+  letter-spacing: 5px;
+  margin-bottom: 40px;
+  text-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+  text-align: center;
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+.crashed {
+  color: #ff3333;
+  font-size: 3rem;
+  margin-bottom: 0;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+  letter-spacing: 4px;
+}
+
+.final-score {
+  color: #ccc;
+  font-family: "Inter", sans-serif;
+  margin-top: 15px;
+  margin-bottom: 40px;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 75%;
+  max-width: 280px;
+}
+
+.button {
+  padding: 16px;
+  font-size: 1.1rem;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  width: 100%;
+}
+
+.btn-tech {
+  background: rgba(0, 255, 204, 0.1);
+  color: #00ffcc;
+  border: 1px solid #00ffcc;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.2) inset;
+}
+
+.btn-tech:hover,
+.btn-tech:active {
+  background: rgba(0, 255, 204, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.5) inset;
+  transform: scale(0.98);
+}
+
+.btn-alt {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.btn-alt:active {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(0.98);
+}
+
+.controls {
+  height: 110px;
+  display: flex;
+  background: linear-gradient(to top, #050505, #111);
+  border-top: 2px solid #333;
+  z-index: 15;
+}
+
+.control-btn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #aaa;
+  cursor: pointer;
+  border-right: 1px solid #222;
+  transition:
+    background 0.1s,
+    color 0.1s;
+}
+
+.control-btn:last-child {
+  border-right: none;
+}
+
+.control-btn:active,
+.control-btn.active {
+  background: rgba(0, 255, 204, 0.05);
+  color: #00ffcc;
+}
+
+.control-btn h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  pointer-events: none;
+}
