@@ -2,7 +2,10 @@
 
 .app-container {
   width: 100vw;
+  /* Fallback for older browsers */
   height: 100vh;
+  /* Dynamic viewport height prevents mobile browser URL bars from hiding the bottom */
+  height: 100dvh;
   max-width: 450px;
   margin: 0 auto;
   display: flex;
@@ -251,12 +254,18 @@
   transform: scale(0.98);
 }
 
+/* --- Control Fixes for Mobile Safe Areas --- */
 .controls {
-  height: 110px;
+  /* Changed fixed height to a responsive setup */
+  min-height: 110px;
   display: flex;
   background: linear-gradient(to top, #050505, #111);
   border-top: 2px solid #333;
   z-index: 15;
+  box-sizing: border-box;
+
+  /* Adds padding equivalent to the device's safe area, plus a 20px base buffer */
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 20px);
 }
 
 .control-btn {
@@ -270,6 +279,9 @@
   transition:
     background 0.1s,
     color 0.1s;
+
+  /* Ensure the button contents are centered vertically within the newly padded space */
+  padding-top: 10px;
 }
 
 .control-btn:last-child {
